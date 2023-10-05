@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Nabla&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* ==================== INITIALIZE ====================*/
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: 'Nabla', cursive; */
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    color: var(--color-white);
+    background-color: var(--color-bg);
+    overflow-x: hidden;
+}
+
+/* ==================== CSS VARIABLES ====================*/
+
+:root {
+    --color-white: #f1f1f1;
+    --color-accent: ##50A584;
+    --color-black-alpha: rgba(0, 0, 0, 0.7);
+    --color-bg: #000000;
+    --color-gray: #383838;
+}
+
+/* ==================== PAGE CONTAINER ====================*/
+
+.background-page {
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    filter: blur(10px) brightness(25%);
+    mask-image: linear-gradient(180deg, black 50%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, black 50%, transparent 100%);
+    background-image: url('assets/img/background.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+.background-poster {
+    width: 102%;
+    height: 102%;
+    position: absolute;
+    top: -1%;
+    left: -1%;
+    background-position: center;
+    background-size: cover;
+    filter: blur(10px) brightness(50%);
+    z-index: -1;
+    background-image: var(--background-url);
+}
+
+
+
+/* ==================== SCROLL BAR ====================*/
+
+::-webkit-scrollbar-track {
+    background: rgba(19, 17, 18, 0.3);
+    border: 0;
+    border-radius: 0px;
+}
+
+::-webkit-scrollbar-track:hover {
+    background: #131112;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #C4C4C4;
+    border: 0;
+    border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #F1F1F1;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
