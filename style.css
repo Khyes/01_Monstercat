@@ -2,6 +2,7 @@
 
 /* ==================== INITIALIZE ====================*/
 
+
 body {
     margin: 0;
     padding: 0;
@@ -12,19 +13,27 @@ body {
     color: var(--color-white);
     background-color: var(--color-bg);
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
+
+* {
+    transition: all 0.2s;
+}
+
 
 /* ==================== CSS VARIABLES ====================*/
 
 :root {
     --color-white: #f1f1f1;
-    --color-accent: ##50A584;
+    --color-light: #c1c1c1;
+    --color-accent: #50A584;
     --color-black-alpha: rgba(0, 0, 0, 0.7);
     --color-bg: #000000;
     --color-gray: #383838;
+    --transition: all 0.7s;
 }
 
-/* ==================== PAGE CONTAINER ====================*/
+/* ==================== BACKGROUND IMAGE BLUR ====================*/
 
 .background-page {
     width: 100%;
@@ -41,21 +50,268 @@ body {
     background-size:cover;
     background-repeat: no-repeat;
     background-position: center;
-
+    transform: scale(1.03) translateY(-10.2px);
 }
 
-.background-poster {
-    width: 102%;
-    height: 102%;
+
+/* ==================== NAV ====================*/
+
+.nav-bar .content {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    max-width: calc(1242px);
+    margin: 0 auto;
+}
+
+.nav-bar .content .socials{
+    font-size: 18px;
+    list-style: none;
     position: absolute;
-    top: -1%;
-    left: -1%;
-    background-position: center;
-    background-size: cover;
-    filter: blur(10px) brightness(50%);
-    z-index: -1;
-    background-image: var(--background-url);
+    top: 100px;
+    right: 0;
+    padding: 0;
+    width: 50px;
+    text-align: center;
+    margin-right: 1.2rem;
 }
+
+.nav-bar .content .socials li {
+    margin: 1rem 0.5rem;
+}
+
+.nav-bar .content .socials a {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--color-white);
+}
+
+.nav-bar .content button {
+    font-size: 24px;
+    border: none;
+    background-color: transparent;
+    color: var(--color-white);
+}
+
+/* ==================== NAV TOGGLED ====================*/
+
+#navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#navigation .navigation-container {
+    pointer-events: initial;
+    height: 100%;
+    width: 420px;
+    max-width: 100%;
+    background: var(--color-black-alpha);
+    backdrop-filter: blur(5px);
+    overflow: hidden;
+    top: 0;
+    left: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    transition: transform 0.25s;
+}
+
+body.nav-active #navigation .navigation-container {
+    transform: translateX(-100%);
+}
+
+#navigation .navigation-container .top {
+    flex-shrink: 0;
+    padding: 2rem;
+}
+
+#navigation .navigation-container .top h4 {
+    font-size: 30px;
+    display: inline;
+    margin-left: 10px;
+}
+
+#navigation .navigation-container .top a {
+    color: var(--color-white);
+    text-decoration: none;
+    display: flex;
+    align-items: flex-end;
+    
+}
+
+#close-menu {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 28px;
+    background-color: transparent;
+    color: var(--color-white);
+    border: none;
+    outline: none;
+}
+
+#navigation .navigation-container .scroller {
+    flex-shrink: 1;
+    overflow: auto;
+    padding: 2rem;
+    flex-basis: 100%;
+    margin-right: 2rem;
+}
+
+#navigation .navigation-container .scroller > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#navigation .navigation-container .scroller > ul > li {
+    margin-bottom: 1.5rem;
+    display: list-item;
+}
+
+
+#navigation .navigation-container .scroller > ul > li > a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--color-white);
+    font-weight: 700;
+    font-size: 1.2em;
+    letter-spacing: 1px;;
+}
+
+#navigation .navigation-container .scroller > ul > li.has-submenu > a:after {
+    font-family: "Font Awesome 5 Free";
+    display: inline-block;
+    content: "\f054";
+    margin-left: 1rem;
+    font-size: 10px;
+    position: relative;
+    top: -2px;
+}
+
+#navigation .navigation-container .scroller > ul > li.active > a:after {
+    content: "\f077";
+}
+
+#navigation .navigation-container .scroller > ul > li.active > ul {
+    display: block;
+}
+
+#navigation .navigation-container .scroller > ul > li > ul {
+    margin: 0 0 0 1rem;
+    list-style: none;
+    padding: 1rem 0 0;
+    font-size: 14px;
+    border-color: transparent;
+    display: none;
+}
+
+#navigation .navigation-container .scroller > ul > li > ul > li {
+    margin-bottom: 1rem;
+}
+
+#navigation .navigation-container .scroller > ul > li > ul > li a {
+    color: var(--color-light);
+    line-height: 1;
+    text-decoration: none;
+    font-size: 1.3em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+#navigation .navigation-container .scroller > ul > li > a:hover,
+#navigation .navigation-container .scroller > ul > li > ul > li a:hover,
+.list-social a:hover {
+    color: white;
+}
+
+#navigation .navigation-container .bottom {
+    flex-shrink: 0;
+    padding: 2rem;
+}
+
+.list-icon {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+}
+
+.bottom .list-social a {
+    color: var(--color-white);
+    transition: var(--transition);
+}
+
+.bottom .list-social li a:hover {
+    color: var(--color-accent);
+}
+
+.list-social li {
+    margin-right: 0.5em;
+}
+.list-inline li {
+    display: inline-block;
+}
+
+.list-plain {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    line-height: 1.75;
+    font-size: 14px;
+}
+
+.mt-medium {
+    margin-top: 2rem;
+}
+
+#navigation .user-menu {
+    font-size: 16px;
+}
+
+#navigation .user-menu .btn {
+    font-weight: 400;
+    color: var(--color-white);
+    background: transparent;
+    border: solid 1px var(--color-white);
+    border-radius: 0;
+    padding: 0.5rem 1.5rem;
+    transition: color 100ms linear, background-color 100ms linear, border-color 100ms linear;
+    cursor: pointer;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    position: relative;
+    transition: var(--transition);
+}
+
+#navigation .user-menu .btn:hover {
+    background-color: var(--color-white);
+    color: var(--color-bg);
+}
+
+#navigation .user-menu .sign-up {
+    color: var(--color-white);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    margin-left: 0.5rem;
+
+}
+
+.ml-xsmall {
+    margin-left: 0.5rem;
+}
+
 
 
 
