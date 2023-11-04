@@ -31,7 +31,8 @@ body {
     --color-accent-alpha: #ffc40077;
     --color-black-alpha: rgba(0, 0, 0, 0.7);
     --color-bg: #151000;
-    --color-gray: #383838;
+    --color-gray: #c4c4c4;
+    --color-border: #616161;
     --transition: all 0.7s;
 }
 
@@ -128,6 +129,7 @@ body {
     max-width: 100%;
     background: var(--color-black-alpha);
     backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     overflow: hidden;
     top: 0;
     left: 100%;
@@ -615,6 +617,7 @@ body.nav-active #navigation .navigation-container {
     color: var(--color-white);
 }
 
+
 /* ==================== MUSIC VIDEO ====================*/
 .video {
     margin-bottom: 3rem;
@@ -641,6 +644,240 @@ body.nav-active #navigation .navigation-container {
     position: absolute;
     top: 0;
     bottom: 0;
+}
+
+/* ==================== FOOTER ====================*/
+footer {
+    margin-bottom: 9rem;
+    margin-top: 2rem;
+}
+
+footer .content {
+    max-width: 992px;
+    padding: 0 1rem;
+    margin: 0 auto;
+}
+
+footer .content nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-gap: 0em 1em;
+}
+
+footer .content nav ul {
+    text-transform: uppercase;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    list-style: none;
+}
+
+footer .content nav ul li {
+    display: list-item;
+}
+
+footer .content nav ul li a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.5em;
+    color: var(--color-white);
+    transition: var(--transition);
+}
+
+footer .content nav ul li a:hover {
+    color: var(--color-accent);
+}
+
+footer .content nav .news {
+    margin-top: 0;
+}
+
+footer .content nav .news .news-title {
+    margin: 0;
+    color: var(--color-gray);
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.5em;
+    letter-spacing: 0.05em;
+}
+
+footer .content nav .news .news-content {
+    font-style: italic;
+    line-height: 1.5;
+    letter-spacing: 0.05em;
+    color: var(--color-gray);
+    margin: 2rem 0;
+}
+
+footer .content nav .news form {
+    margin-top: 2rem;
+    border-bottom: solid 1px var(--color-border);
+    display: flex;
+    padding-bottom: 0.5rem;
+}
+
+footer .content nav .news form input {
+    border-color: transparent;
+    flex: 1;
+    background-color: transparent;
+    font-size: 1.5em;
+    color: var(--color-white);
+}
+
+input:focus {
+    border: none;
+    outline: none;
+}
+
+footer .content nav .news form button {
+    border-color: transparent;
+    background: transparent;
+    color: var(--color-white);
+    border-radius: 2rem;
+}
+
+footer .content nav .news form button:hover {
+    color: var(--color-accent);
+    text-shadow: var(--color-accent) 0 0 1rem,
+    var(--color-accent) 0 0 4px;
+}
+
+
+article hr {
+    border: none;
+    height: 1px;
+    background-color: var(--color-white);
+    margin-top: 7rem;
+    margin-bottom: 4rem;
+}
+
+.content > hr {
+    border: none;
+    height: 1px;
+    background-color: var(--color-white);
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+footer .content .copyrights {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+footer .content .copyrights p {
+    font-style: italic;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    margin: 1rem 0;
+}
+
+footer .content .copyrights .nav {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+footer .content .copyrights .nav ul {
+    float: right;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+}
+
+footer .content .copyrights .nav ul li {
+    margin-right: 0.8em;
+    display: inline-block;
+}
+
+footer .content .copyrights .nav ul li a {
+    color: var(--color-white);
+    font-size: 1.3em;
+}
+
+footer .content .copyrights .nav ul li a:hover {
+    color: var(--color-accent);
+}
+
+.p_1 {
+    width: 100%;
+    margin: auto;
+    padding-top: 4rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.p_2 {
+    width: 100%;
+    margin: auto;
+    padding-top: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+/* ==================== MUSIC CONTROLS ====================*/
+.music-control {
+    position: fixed;
+    bottom: 0;
+    background-color: var(--color-black-alpha);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    height: 5rem;
+    width: 100vw;
+    z-index: 99;
+    border-top: 1px solid #ffffff55;
+    display: none;
+}
+
+#progress {
+    position: absolute;
+    height: 5px;
+    width: 0%;
+    background-color: var(--color-accent);
+    top: 0;
+    left: 0;
+    border-radius: 0;
+}
+
+
+.music-control .container {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+}
+
+.music-control .container .song #track-name {
+    line-height: 0.5;
+    padding-top: 10px;
+}
+
+.music-control .container .song #track-artist {
+    font-size: 0.7em;
+    color: var(--color-accent);
+    text-align: right;
+}
+
+.music-control .container .control button{
+    background-color: transparent;
+    border: none;
+    color: var(--color-white);
+    margin-right: 0.5rem;
+}
+
+.music-control .container .control button:hover {
+    color: var(--color-accent);
+}
+
+.active-player {
+    color: var(--color-accent);
+    text-shadow: var(--color-accent) 1px 0 50px,
+    var(--color-accent) 1px 0 10px,
+    var(--color-accent) 1px 0 25px;
+}
+
+#pause {
+    display: none;
 }
 
 /* ==================== SCROLL BAR ====================*/
